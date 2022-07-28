@@ -1,2 +1,4 @@
 # multimodal_brainage
 brain age prediction using both pre-engineered and convolution derived features
+
+Prediction of biological brain age is important as its deviation from chronological age can serve as a biomarker for degenerative neurological disorders. In this study, we suggest novel fusion deep learning algorithms which combine pre-engineered features and convolutional neural net (CNN) extracted features of T1-weighted MR images. Over all backbone CNN architectures, fusion models improved prediction accuracy (mean absolute error (MAE) = 3.40–3.52) compared with feature-engineered regression (MAE = 4.58–5.15) and image-based CNN (MAE = 3.60–3.95) alone. These results indicate that using both features derived from convolution and pre-engineering can complement each other in predicting brain age.
