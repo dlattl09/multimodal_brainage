@@ -1,4 +1,5 @@
-#This code is based on 3DResNet18 implementation code provided by Pytorch: http://pytorch.org/vision/main/_modules/torchvision/models/video/resnet.html#r3d_18
+#This code is based on 3DResNet18 implementation code provided by Pytorch:
+#http://pytorch.org/vision/main/_modules/torchvision/models/video/resnet.html#r3d_18
 
 
 __all__ = ['r3d_18', 'mc3_18', 'r2plus1d_18']
@@ -238,24 +239,23 @@ class VideoResNet(nn.Module):
         x = self.stem(x)
 
         x = self.layer1(x)
-      #  print(x.shape)
         x = self.layer2(x)
-       # print(x.shape)
         x = self.layer3(x)
-       # print(x.shape)
         x = self.layer4(x)
      
         x = self.avgpool(x)
      
-      #  print(x.shape)
-        # Flatten the layer to fc
+
         x = x.flatten(1)
+        
+        # mlp for pre-defined feature dataset
         xf = self.bn_f1(xf)
-      #  xf = self.dropout(xf)
         xf = self.fc_f1(xf)
         xf = self.bn_f2(xf)
         xf = self.fc_f2(xf)
         xf = self.bn_f3(xf)
+        
+        # concat both extracted features
         x = torch.cat([x, xf], dim=1)
         x = self.fc1(x)
        # x = self.fc2(x)
